@@ -1,0 +1,72 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+          channel: 'stable'
+
+      - run: flutter --disable-analytics
+
+      - name: Create fresh Flutter project
+        run: |
+          cd /tmp
+          rm -rf flutter_base
+          flutter create -t app --platforms=android \
+            --project-name wia_water_impact_assessment \
+            --org com.wia \
+            --description "WIA" \
+            flutter_base
+
+      - name: Merge fresh android + our code
+        run: |
+          rm -rf android
+          cp -r /tmp/flutter_base/android ./android
+          cp /tmp/flutter_base/analysis_options.yaml ./analysis_options.yaml 2>/dev/null || true
+
+          cat > android/gradle.properties << 'EOF'
+          org.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+          android.useAndroidX=true
+          android.enableJetifier=true
+          android.suppressUnsupportedCompileSdk=35
+          org.gradle.parallel=true
+          org.gradle.caching=true
+          org.gradle.daemon=false
+          EOF
+
+          # Force compileSdk to 35 (fixes flutter_plugin_android_lifecycle warning)
+          python3 -c "
+          import re
+          with open('android/app/build.gradle', 'r') as f:
+              content = f.read()
+          # Replace any compileSdk version with 35
+          content = re.sub(r'compileSdk\s+\d+', 'compileSdk 35', content)
+          with open('android/app/build.gradle', 'w') as f:
+              f.write(content)
+          "
+
+      - run: flutter pub get
+
+      - run: flutter build apk --release
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
