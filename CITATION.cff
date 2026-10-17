@@ -18,3 +18,7 @@ keywords:
   - Leopold matrix
   - Flutter
 abstract: "Bilingual (Arabic/English) offline-first Flutter application for criteria-based screening of the environmental, social, and economic impacts of water infrastructure projects. It implements a Leopold-matrix scoring engine over 38 criteria in three weighted dimensions (environmental, social, economic), aggregates them into a composite index, and generates severity-tiered mitigation recommendations mapped to the IFC Performance Standards, the World Bank Environmental and Social Framework, and related international frameworks."
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23428817
+    description: Zenodo archived version of WIA v1.0.0

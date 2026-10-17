@@ -16,7 +16,7 @@ affiliations:
 date: 17 October 2026
 bibliography: paper.bib
 repository-code: https://github.com/darwishdasty-oss/wia-water-impact-assessment
-# archive-doi: 10.5281/zenodo.XXXXXXX   # <-- fill in after minting the Zenodo deposit (release v1.0.0)
+archive-doi: 10.5281/zenodo.23428817
 ---
 
 # Summary

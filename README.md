@@ -1,4 +1,5 @@
 # WIA — Water Impact Assessment
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23428817.svg)](https://doi.org/10.5281/zenodo.23428817)
 
 A bilingual (Arabic / English) Flutter application for structured,
 criteria-based assessment of water projects. WIA guides the assessor through
