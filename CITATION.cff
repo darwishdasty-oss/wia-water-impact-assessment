@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+title: "WIA: a bilingual, offline-first Android application for criteria-based impact assessment of water infrastructure projects"
+authors:
+  - family-names: Hebah
+    given-names: Abbas Ahmed Mohammed
+    orcid: "https://orcid.org/0009-0000-5689-2157"
+    affiliation: "Sana'a University"
+    email: "abbas74.hebah@gmail.com"
+version: 1.0.0
+date-released: "2026-10-17"
+license: MIT
+repository-code: "https://github.com/darwishdasty-oss/wia-water-impact-assessment"
+keywords:
+  - water resources
+  - environmental impact assessment
+  - multi-criteria decision analysis
+  - Leopold matrix
+  - Flutter
+abstract: "Bilingual (Arabic/English) offline-first Flutter application for criteria-based screening of the environmental, social, and economic impacts of water infrastructure projects. It implements a Leopold-matrix scoring engine over 38 criteria in three weighted dimensions (environmental, social, economic), aggregates them into a composite index, and generates severity-tiered mitigation recommendations mapped to the IFC Performance Standards, the World Bank Environmental and Social Framework, and related international frameworks."
