@@ -21,4 +21,4 @@ abstract: "Bilingual (Arabic/English) offline-first Flutter application for crit
 identifiers:
   - type: doi
     value: 10.5281/zenodo.23428817
-    description: Zenodo archived version of WIA v1.0.0
+    description: Zenodo concept DOI (all versions) of WIA v1.0.0
